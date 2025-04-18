@@ -10,8 +10,13 @@
 - **ASCII Art** : Un poisson-globe s'affiche dans la console pour un effet comique.
 - **Événement DOMContentLoaded** : Le script ne s'exécute qu'une fois le DOM complètement chargé.
 
+## Fichiers
+- puffer.js : Version classique du projet
+- puffer_hardcore.js : Version plus sophistiquée du script, ralentissant potentiellement un peu plus la page.
+- obfuscated : Le dossier contient les mêmes scripts mais dans des formats illisibles pour un humain.
+
 ## Installation
-1. Téléchargez le fichier `puffer.js`.
+1. Téléchargez le fichier `puffer` de votre choix.
 2. Ajoutez le script à votre projet, soit en l'incluant directement dans une page HTML :
    ```html
    <script src="puffer.js"></script>

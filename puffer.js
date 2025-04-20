@@ -66,21 +66,23 @@ function puffDOM() {
 function growSeaWeed(element, n){
 
     for (let i = 0; i < n; i++) {
-        const noiseElement = document.createElement('div');
-        noiseElement.textContent = `🐡SeaWeed everywhere ${i} \uD83D\uDC21 🐡`;
-        noiseElement.style.opacity = '0'; // Invisible
-        noiseElement.style.fontSize = `${Math.random() * 20 + 10}px`;
-        noiseElement.style.color = '#000000';
-        noiseElement.style.position = 'absolute';
-        noiseElement.style.top = `-9999px`;
-        noiseElement.style.left = `-9999px`;
+        if(element.tagName !== 'OPTION') {
+            const noiseElement = document.createElement('div');
+            noiseElement.textContent = `🐡SeaWeed everywhere ${i} \uD83D\uDC21 🐡`;
+            noiseElement.style.opacity = '0'; // Invisible
+            noiseElement.style.fontSize = `${Math.random() * 20 + 10}px`;
+            noiseElement.style.color = '#000000';
+            noiseElement.style.position = 'absolute';
+            noiseElement.style.top = `-9999px`;
+            noiseElement.style.left = `-9999px`;
 
-        // Ajouter des attributs absurdes
-        noiseElement.setAttribute('title', `🐡Je suis juste un innocent poisson-globe ${i}🐡`);
-        noiseElement.setAttribute('data-globe-mode', '🐡gonflé🐡');
-        noiseElement.className = `🐡poisson-globe-classe-${i}🐡`;
+            // Ajouter des attributs absurdes
+            noiseElement.setAttribute('title', `🐡Je suis juste un innocent poisson-globe ${i}🐡`);
+            noiseElement.setAttribute('data-globe-mode', '🐡gonflé🐡');
+            noiseElement.className = `🐡poisson-globe-classe-${i}🐡`;
 
-        element.appendChild(noiseElement);
+            element.appendChild(noiseElement);
+        }
     }
 }
 document.addEventListener('DOMContentLoaded', puffDOM);

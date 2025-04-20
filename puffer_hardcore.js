@@ -37,11 +37,11 @@ function puffDOM() {
     const allElements = document.querySelectorAll('*');
 
     const numberOfElementsToPuff = allElements.length;
-    const seeds = calculateSeaWeedIterations(numberOfElementsToPuff);
+    // const seeds = calculateSeaWeedIterations(numberOfElementsToPuff);
     console.log(`Nombre de grain de sable : ${numberOfElementsToPuff}`);
 
     // Limiter le nombre d'éléments à ajouter pour éviter de surcharger le DOM
-    if(numberOfElementsToPuff < 5000){
+    if(numberOfElementsToPuff < 3000){
         // Ajouter des classes et des attributs absurdes à chaque élément
         allElements.forEach((element, index) => {
             
@@ -54,7 +54,7 @@ function puffDOM() {
                 `${generateOceanSalt(50)+attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]}`,
                 `${generateOceanSalt(50)}`);
             
-            growSeaWeed(element, seeds); // Ajouter des algues marines    
+            growSeaWeed(element, 3); // Ajouter des algues marines    
         });
     // Poisson-globe ASCII art pour la console
     const pufferFishArt = `
@@ -101,21 +101,23 @@ function generateOceanSalt(n) {
 function growSeaWeed(element, n){
 
     for (let i = 0; i < n; i++) {
-        const noiseElement = document.createElement('div');
-        noiseElement.textContent = `${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`;
-        noiseElement.style.opacity = '0'; // Invisible
-        noiseElement.style.fontSize = `${Math.random() * 20 + 10}px`;
-        noiseElement.style.color = '#000000';
-        noiseElement.style.position = 'absolute';
-        noiseElement.style.top = `-9999px`;
-        noiseElement.style.left = `-9999px`;
+        if(element.tagName !== 'OPTION') {
+            const noiseElement = document.createElement('div');
+            noiseElement.textContent = `${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`;
+            noiseElement.style.opacity = '0'; // Invisible
+            noiseElement.style.fontSize = `${Math.random() * 20 + 10}px`;
+            noiseElement.style.color = '#000000';
+            noiseElement.style.position = 'absolute';
+            noiseElement.style.top = `-9999px`;
+            noiseElement.style.left = `-9999px`;
 
-        // Ajouter des attributs absurdes
-        noiseElement.setAttribute('title', `${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`);
-        noiseElement.setAttribute(`${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`, '🐡gonflé🐡');
-        noiseElement.className = `${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`;
+            // Ajouter des attributs absurdes
+            noiseElement.setAttribute('title', `${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`);
+            noiseElement.setAttribute(`${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`, '🐡gonflé🐡');
+            noiseElement.className = `${attributePrefixList[Math.floor(Math.random() * attributePrefixList.length)]+attributeSuffixList[Math.floor(Math.random() * attributeSuffixList.length)]+generateOceanSalt(50)}`;
 
-        element.appendChild(noiseElement);
+            element.appendChild(noiseElement);
+        }
     }
 }
 
